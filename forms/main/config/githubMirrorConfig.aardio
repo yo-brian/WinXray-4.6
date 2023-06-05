@@ -2,14 +2,17 @@ import win.ui;
 /*DSG{{*/
 var winform = win.form(text="Github加速节点";right=470;bottom=532)
 winform.add(
-autoAddMirrors={cls="checkbox";text="无节点时自动添加默认节点";left=272;top=466;right=455;bottom=487;z=4};
-btnAdd={cls="button";text="添加节点";left=373;top=15;right=447;bottom=41;z=6};
-btnReset={cls="button";text="重置节点";left=357;top=497;right=444;bottom=519;z=2};
-btnTest={cls="button";text="测试所有节点可用性";left=209;top=497;right=337;bottom=519;z=3};
-mirrors={cls="listview";left=25;top=60;right=447;bottom=448;edge=1;fullRow=1;vscroll=1;z=1};
-textMirror={cls="edit";left=25;top=15;right=358;bottom=39;edge=1;z=5}
+autoAddMirrors={cls="checkbox";text="无节点时自动添加默认节点";left=272;top=467;right=455;bottom=488;dr=1;dt=0.88;z=4};
+btnAdd={cls="button";text="添加节点";left=373;top=15;right=447;bottom=41;dr=1;dt=1;z=6};
+btnReset={cls="button";text="重置节点";left=357;top=497;right=444;bottom=519;db=1;dr=1;z=2};
+btnTest={cls="button";text="测试所有节点可用性";left=209;top=496;right=337;bottom=518;db=1;dr=1;z=3};
+mirrors={cls="listview";left=24;top=60;right=446;bottom=448;db=0.16;dl=1;dr=1;dt=0.11;edge=1;fullRow=1;vscroll=1;z=1};
+textMirror={cls="edit";left=25;top=15;right=358;bottom=39;dl=1;dr=0.24;dt=1;edge=1;z=5}
 )
 /*}}*/
+
+import win.ui.minmax;
+win.ui.minmax(winform,450,518);
 
 winform.mirrors.insertColumn("加速节点地址", 300)
 winform.mirrors.insertColumn("状态",-1)

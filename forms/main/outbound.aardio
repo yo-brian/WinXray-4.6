@@ -32,6 +32,9 @@ static5={cls="static";text="传输协议( network ):";left=473;top=94;right=641;
 )
 /*}}*/
 
+import win.ui.minmax;
+win.ui.minmax(winform);
+
 winform.outboundConfig = {};
 winform.addOutboundField = function(k,v){
 	if(winform.outboundConfig[k] !== null){

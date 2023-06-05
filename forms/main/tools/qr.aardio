@@ -5,7 +5,7 @@ import win.ui;
 var winform = win.form(text="二维码生成工具";right=851;bottom=775)
 winform.add(
 btnQrEnode={cls="button";text="生成二维码";left=655;top=630;right=797;bottom=672;db=1;dr=1;z=2};
-edit={cls="edit";text="https://www.winxray.com";left=69;top=633;right=622;bottom=670;db=1;dl=1;dr=1;edge=1;multiline=1;z=9};
+edit={cls="edit";text="WinXray";left=69;top=633;right=622;bottom=670;db=1;dl=1;dr=1;edge=1;multiline=1;z=9};
 lbErrLevel={cls="static";text=" 0：L 可纠错7%数据码字";left=129;top=735;right=297;bottom=758;db=1;dl=1;transparent=1;z=7};
 lbVersion={cls="static";text="自动选择版本";left=491;top=735;right=697;bottom=758;db=1;dl=1;dr=1;transparent=1;z=8};
 plus={cls="plus";left=71;top=50;right=786;bottom=588;db=1;dl=1;dr=1;dt=1;repeat="scale";z=1};
@@ -15,6 +15,9 @@ tbErrLevel={cls="trackbar";left=121;top=690;right=315;bottom=720;db=1;dl=1;max=3
 tbVersion={cls="trackbar";left=464;top=690;right=728;bottom=720;db=1;dl=1;dr=1;max=40;min=0;z=5}
 )
 /*}}*/
+
+import win.ui.minmax;
+win.ui.minmax(winform,780,580);
 
 winform.tbErrLevel.oncommand = function(id,event,pos){
      

@@ -24,6 +24,9 @@ radioProxy={cls="plus";text="代理";left=460;top=27;right=529;bottom=58;align="
 )
 /*}}*/
 
+import win.ui.minmax;
+win.ui.minmax(winform,850,400);
+
 import config;
 import style;
 winform.btnSave.skin(style.primaryButton);
