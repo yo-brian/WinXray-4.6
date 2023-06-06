@@ -149,7 +149,7 @@ else {
 	/* if( fsys.update.simpleMain(
 		"WinXray(网络代理通用客户端 )",
 		"https://raw.githubusercontent.com/TheMRLL/winxray/main/release/update/version.txt",
-		..io.fullpath("/update"),
+		..io.fullpath("/download/update"),
 		function(version,description,status){}
 		,,false)){
 			// 更新成功的话，退出本程序

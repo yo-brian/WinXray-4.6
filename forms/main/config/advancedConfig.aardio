@@ -16,7 +16,7 @@ editSocksPort={cls="plus";left=278;top=91;right=358;bottom=115;align="left";bgco
 hotkey={cls="hotkey";left=227;top=249;right=367;bottom=269;clip=1;db=1;dl=1;edge=1;z=26};
 lbMaxTestServers={cls="static";text="100";left=564;top=62;right=880;bottom=88;bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-13);transparent=1;z=25};
 lbTestInterval={cls="static";text="15秒";left=564;top=26;right=823;bottom=52;bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-13);transparent=1;z=20};
-lnkVersion={cls="plus";text="正在检查新版本";left=15;top=533;right=376;bottom=564;align="left";color=8388608;db=1;dl=1;font=LOGFONT(h=-13);iconColor=2960685;iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF021';notify=1;paddingLeft=20;z=10};
+lnkVersion={cls="plus";text="获取最新版本";left=15;top=533;right=376;bottom=564;align="left";color=8388608;db=1;dl=1;font=LOGFONT(h=-13);iconColor=2960685;iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF021';notify=1;paddingLeft=20;z=10};
 plus={cls="plus";text="全局/PAC 代理切换热键";left=368;top=248;right=702;bottom=270;align="left";db=1;dl=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(name='FontAwesome');padding={left=9}};iconText='\uF11C ';notify=1;tabstop=1;textPadding={left=25};z=27};
 radioHttpPac={cls="plus";text="仅 HTTP";left=273;top=167;right=365;bottom=198;align="left";bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF111 ';notify=1;textPadding={left=19};z=21};
 radioHttpProxy={cls="plus";text="HTTP( 推荐 )";left=378;top=205;right=537;bottom=236;align="left";bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF111 ';notify=1;textPadding={left=19};z=29};
@@ -335,7 +335,6 @@ if(table.getByNamespace("fsys.update.simpleMain")){
 	
 	winform.lnkVersion.oncommand = function(id,event){ 
 		process.openUrl("https://github.com/DearDawalish/WinXray/releases")
-		//winform.msgFrown("该功能暂时关闭", 1500)
 /*
 		winform.lnkVersion.text = fsys.update.simpleMain.getReadyStatusInfo() ? "正在启动自动更新" : "正在检查新版本";
 		winform.lnkVersion.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'}
