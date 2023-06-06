@@ -711,13 +711,6 @@ frmXray.listview.onnotify = function(id,code,ptr){
 					}
 				});
 				
-			popmenu.add("重置为默认服务器列表",
-				function(id){
-					..config.__loadDefaultOutbounds();
-					publish("outbounds.updateConfigJson");
-					publish("uiCommand.restartxrayCore");
-				}
-			);  
 			 
 			if(#selectedItems==1){	
 		 
