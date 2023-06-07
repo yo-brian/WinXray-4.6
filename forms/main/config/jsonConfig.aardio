@@ -4,24 +4,22 @@ import win.ui;
 var winform = win.form(text="aardio form";right=938;bottom=638;bgcolor=16777215)
 winform.add(
 advancedConfig={cls="\forms\main\config\advancedConfig.aardio";left=9;top=20;right=930;bottom=594;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;edge=1;z=12};
-btnGithubMirror={cls="plus";text="Github 加速节点";left=448;top=39;right=643;bottom=67;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF09B';notify=1;textPadding={left=50};z=20};
+btnGithubMirror={cls="plus";text="Github 加速节点";left=452;top=5;right=647;bottom=33;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF09B';notify=1;textPadding={left=50};z=19};
 btnUpdate={cls="plus";text="更新服务器配置";left=699;top=604;right=868;bottom=635;align="left";bgcolor=11580047;db=1;dr=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=22}};iconText='\uF0C7';notify=1;textPadding={left=40};z=6};
-btnUpdateNaiveCore={cls="plus";text="下载 / 更新 NaÏveProxy Core";left=448;top=7;right=709;bottom=35;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF1A0';notify=1;textPadding={left=50};z=17};
-btnUpdateRules={cls="plus";text="下载 / 更新 路由规则";left=228;top=39;right=426;bottom=67;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-19;name='FontAwesome');padding={left=18}};iconText='\uF041';notify=1;textPadding={left=50};z=15};
-btnUpdateSsrCore={cls="plus";text="下载 / 更新 SSR Core";left=16;top=39;right=214;bottom=67;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF1D8';notify=1;textPadding={left=50};z=16};
-btnUpdatev2rayCore={cls="plus";text="下载 / 更新 V2ray Core";left=227;top=5;right=425;bottom=33;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-19;name='FontAwesome');padding={left=18}};iconText='\uF27D';notify=1;textPadding={left=50};z=14};
+btnUpdateNaiveCore={cls="plus";text="下载 / 更新 NaÏveProxy Core";left=228;top=5;right=489;bottom=33;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF1A0';notify=1;textPadding={left=50};z=16};
+btnUpdateRules={cls="plus";text="下载 / 更新 路由规则";left=228;top=39;right=426;bottom=67;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-19;name='FontAwesome');padding={left=18}};iconText='\uF041';notify=1;textPadding={left=50};z=14};
+btnUpdateSsrCore={cls="plus";text="下载 / 更新 SSR Core";left=16;top=39;right=214;bottom=67;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-17;name='FontAwesome');padding={left=18}};iconText='\uF1D8';notify=1;textPadding={left=50};z=15};
 btnUpdatexrayCore={cls="plus";text="下载 / 更新 Xray Core";left=16;top=5;right=223;bottom=33;align="left";color=3947580;dl=1;dt=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-19;name='FontAwesome');padding={left=18}};iconText='\uF2D3';notify=1;textPadding={left=50};z=13};
 editCoreConfig={cls="edit";left=9;top=72;right=930;bottom=594;db=1;dl=1;dr=1;dt=1;edge=1;hide=1;hscroll=1;multiline=1;vscroll=1;z=7};
 editOutbounds={cls="edit";left=9;top=29;right=930;bottom=594;db=1;dl=1;dr=1;dt=1;edge=1;hscroll=1;multiline=1;vscroll=1;z=8};
 lbTip={cls="static";text="可在下面输入多行服务器分享链接，或JSON数组( 点击字段名会显示用法说明 )：";left=11;top=9;right=899;bottom=29;color=3947580;dl=1;dr=1;dt=1;font=LOGFONT(h=-13);transparent=1;z=9};
-lbTipForCoreJson={cls="static";text="tag 指定为 proxy,http_proxy 的节点属于自动
-维护节点 - 不可删除";left=677;top=34;right=1058;bottom=69;color=4964352;dl=1;dt=1;transparent=1;z=19};
+lbTipForCoreJson={cls="static";text="tag 指定为 proxy,http_proxy 的节点属于自动维护节点 - 不可删除";left=471;top=44;right=852;bottom=79;color=4964352;dl=1;dt=1;transparent=1;z=18};
 navAdvancedConfig={cls="plus";text="代理端口 / 高级配置";left=359;top=600;right=493;bottom=632;border={top=1;color=-16744448};db=1;dl=1;z=10};
 navCoreConfig={cls="plus";text="Core 配置 ( JSON )";left=162;top=600;right=293;bottom=632;border={top=1;color=-16744448};db=1;dl=1;z=3};
 navOutbounds={cls="plus";text="服务器配置( JSON )";left=31;top=600;right=162;bottom=632;border={top=1;color=-16744448};db=1;dl=1;z=2};
 navRight={cls="plus";left=493;top=600;right=762;bottom=601;bgcolor=16777215;border={top=1;color=-16744448};db=1;dl=1;dr=1;linearGradient=180;z=4};
 navSubscription={cls="plus";text="订阅";left=293;top=600;right=359;bottom=632;border={top=1;color=-16744448};db=1;dl=1;z=11};
-navUwpExemption={cls="plus";text="UWP 应用配置";left=499;top=600;right=633;bottom=632;border={top=1;color=-16744448};db=1;dl=1;notify=1;z=18};
+navUwpExemption={cls="plus";text="UWP 应用配置";left=499;top=600;right=633;bottom=632;border={top=1;color=-16744448};db=1;dl=1;notify=1;z=17};
 plus={cls="plus";left=9;top=600;right=31;bottom=601;border={top=1;color=-16744448};db=1;dl=1;z=5};
 subscription={cls="\forms\main\config\subscription.aardio";left=9;top=19;right=930;bottom=594;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;edge=1;z=1}
 )
@@ -52,7 +50,6 @@ tbs.skin({
 tbs.onSelchange = function(idx,strip,form){
     winform.btnUpdateSsrCore.hide = idx!=2;
 	winform.btnUpdatexrayCore.hide = idx!=2;
-	winform.btnUpdatev2rayCore.hide = idx!=2;
 	winform.btnUpdateRules.hide = idx!=2;
 	winform.btnUpdateNaiveCore.hide = idx!=2;
 	winform.btnUpdateSsrCore.hide = idx !=2;
@@ -661,7 +658,6 @@ winform.btnUpdateSsrCore.oncommand = function(id,event){
 
 winform.btnUpdatexrayCore.skin(style.plainButton)
 winform.btnUpdatexrayCore.oncommand = function(id,event){
-    winform.btnUpdatev2rayCore.disabled = true;
 	winform.btnUpdatexrayCore.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'};
 	
 	import xray.core;
@@ -676,28 +672,6 @@ winform.btnUpdatexrayCore.oncommand = function(id,event){
 		winform.msgErr("xray Core 下载失败！");
 	} 
 	
-	winform.btnUpdatev2rayCore.disabled = false;
-}
-
-winform.btnUpdatev2rayCore.skin(style.plainButton)
-winform.btnUpdatev2rayCore.oncommand = function(id,event){
-    
-    winform.btnUpdatexrayCore.disabled = true;
-	winform.btnUpdatev2rayCore.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'};
-	
-	import xray.core.v2ray;
-	var versionTag = xray.core.v2ray.updateCore();
-	if( versionTag ){
-		publish("uiCommand.restartxrayCore");
-		winform.btnUpdatev2rayCore.disabledText = null;
-		winform.msgOk("已下载最新 v2ray Core 版本：" + versionTag+ '\nxray 内核已切换为：v2ray Core',1500)
-	}
-	else {
-		winform.btnUpdatev2rayCore.disabledText = null;
-		winform.msgErr("v2ray Core 下载失败！");
-	} 
-	
-	winform.btnUpdatexrayCore.disabled = false;
 }
 
 winform.btnUpdateRules.skin(style.plainButton)

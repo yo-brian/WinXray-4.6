@@ -105,7 +105,7 @@ winform.cmbProtocol.onProtocolChange = function(){
 		}
 		winform.cmbNetwork.selIndex = 1;
 		winform.outboundConfig.network = "tcp";
-		winform.btnUpdateCore.text = '下载 / 更新支持组件： V2ray Core';
+		winform.btnUpdateCore.text = '下载 / 更新支持组件： Xray Core';
 		winform.editId.setCueBannerText("请输入 GUID");
 	}
 	elseif(sel=="naive"){
@@ -571,16 +571,16 @@ winform.btnUpdateCore.oncommand = function(id,event){
 		} 	
 	}
 	elseif(sel=="vless"){
-		import xray.core.v2ray;
-		var versionTag = xray.core.v2ray.updateCore();
+		import xray.core;
+		var versionTag = xray.core.updateCore();
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("已下载最新 v2ray Core 版本：" + versionTag+ '\nxray 内核已切换为：v2ray Core',1500)
+			winform.msgOk("Xray Core 已更新到：" + versionTag,1500)
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgErr("v2ray Core 下载失败！");
+			winform.msgErr("Xray Core 下载失败！");
 		} 	
 	}
 	elseif(sel=="naive"){
@@ -602,11 +602,11 @@ winform.btnUpdateCore.oncommand = function(id,event){
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("已下载最新 xray Core 版本：" + versionTag + '\nxray 内核已切换为： xray Core',1500)
+			winform.msgOk("Xray Core 已更新到：" + versionTag,1500)
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgErr("xray Core 下载失败！");
+			winform.msgErr("Xray Core 下载失败！");
 		} 
 	}
 }
