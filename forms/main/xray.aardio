@@ -1202,9 +1202,6 @@ frmXray.btnImportServerFromClipBd.oncommand = function(id,event){
 
 		var outbounds = xray.outbounds.importFromString(str);
 		if(#outbounds){
-			if(config.proxy.outbounds===null){
-				config.proxy.outbounds = ..table.array();
-			}
 			..table.append(config.proxy.outbounds,outbounds);
 			// 防止首次粘贴时，下载core失败导致没有保存节点的情况，所以手动save一下
 			config.proxy.save();

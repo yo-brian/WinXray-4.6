@@ -46,6 +46,10 @@ if(!config.proxy.hotkey){
 	config.proxy.hotkey = {1/*_MOD_ALT*/|2/*_MOD_CONTROL*/|4/*_MOD_SHIFT*/;'P'#}
 }
 
+if(config.proxy.outbounds === null){
+	config.proxy.outbounds = ..table.array();
+}
+
 config.__resetDefaultCore = function(){
 	config.core.default =  {
 		inbounds={
