@@ -232,7 +232,7 @@ var getxrayCoreUrl = function(){
 } 
 
 getPath = function(hwnd){
-	var path = ..io.fullpath("/xray-core/xray.exe");
+	var path = ..io.fullpath("/core/xray/xray.exe");
 	if(..io.exist(path)){
 		return path;
 	}
@@ -257,25 +257,27 @@ getPath = function(hwnd){
 		return null;
 	}
 	
-	var msgDlg = ..win.dlg.message(..mainForm); 
-	var form = msgDlg.create('正在查询 Github 加速地址',,true);
-	form.icon = '\uF1D8';
-	form.progress.startProgress(50); 
-
-	url = ..win.invoke(function(url){
-		import xray.githubMirror;
-		return xray.githubMirror.getMirrorUrl(url);
-	},url);
-	form.close();
-
-	..publish("uiCommand.print","Github加速地址:");
-	..publish("uiCommand.print",url);
+	// 全局代理的情况下，不使用加速节点
+	if(..config.proxy.mode != "proxy"){
+		var msgDlg = ..win.dlg.message(..mainForm); 
+		var form = msgDlg.create('正在查询 Github 加速地址',,true);
+		form.icon = '\uF1D8';
+		form.progress.startProgress(50); 
+	
+		url = ..win.invoke(function(url){
+			import xray.githubMirror;
+			return xray.githubMirror.getMirrorUrl(url);
+		},url);
+		form.close();	
+		..publish("uiCommand.print","Github加速地址:");
+		..publish("uiCommand.print",url);
+	}
 	
 	
 	import zlib.httpFile;
 	if( ..zlib.httpFile.download(url,"正在下载 Xray Core"
 		,..io.fullpath("/download/")
-		,..io.fullpath("/xray-core/"),,..mainForm.hwnd) ){
+		,..io.fullpath("/core/xray/"),,..mainForm.hwnd) ){
 			
 		self.lastDownloadingCoreFailed = null;
 		..mainForm.disabled = false;
@@ -289,23 +291,12 @@ getPath = function(hwnd){
 		..publish("uiCommand.print",url);
 		
 		..publish("uiCommand.print","下载后请解压到以下目录内:");
-		..publish("uiCommand.print",..io.fullpath("/xray-core/"));
+		..publish("uiCommand.print",..io.fullpath("/core/xray/"));
 	}  
 } 
 
 getCoreDir = function(hwnd){
-	var path = ..io.fullpath("/xray-core/xray.exe");
-	if(..io.exist(path)){
-		return ..io.fullpath("/xray-core/");
-	}
-		
-	
-	var path = ..io.fullpath("/xray-core/");
-	if(..io.exist(path)){
-		return path;
-	}
-	
-	return ..io.fullpath("/xray-core/");
+	return ..io.fullpath("/core/xray/");
 } 
 
 updateCore = function(){
@@ -319,16 +310,21 @@ updateCore = function(){
 		return null;
 	}
 	
-	var msgDlg = ..win.dlg.message(..mainForm); 
-	var form = msgDlg.create('正在查询 Github 加速地址',,true);
-	form.icon = '\uF1D8';
-	form.progress.startProgress(50); 
-
-	url = ..win.invoke(function(url){
-		import xray.githubMirror;
-		return xray.githubMirror.getMirrorUrl(url);
-	},url);
-	form.close();
+	// 全局代理的情况下，不使用加速节点
+	if(..config.proxy.mode != "proxy"){
+		var msgDlg = ..win.dlg.message(..mainForm); 
+		var form = msgDlg.create('正在查询 Github 加速地址',,true);
+		form.icon = '\uF1D8';
+		form.progress.startProgress(50); 
+	
+		url = ..win.invoke(function(url){
+			import xray.githubMirror;
+			return xray.githubMirror.getMirrorUrl(url);
+		},url);
+		form.close();
+		..publish("uiCommand.print","Github加速地址:");
+		..publish("uiCommand.print",url);	
+	}
 	  
 	import fsys;
 	fsys.delete( ..io.fullpath("/temp/xray/") );

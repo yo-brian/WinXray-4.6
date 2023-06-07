@@ -46,16 +46,21 @@ update = function(){
 		return null;
 	}
 	
-	var msgDlg = ..win.dlg.message(..mainForm); 
-	var form = msgDlg.create('正在查询 Github 加速地址',,true);
-	form.icon = '\uF1D8';
-	form.progress.startProgress(50); 
-
-	url = ..win.invoke(function(url){
-		import xray.githubMirror;
-		return xray.githubMirror.getMirrorUrl(url);
-	},url);
-	form.close();
+	// 全局代理的情况下，不使用加速节点
+	if(..config.proxy.mode != "proxy"){
+		var msgDlg = ..win.dlg.message(..mainForm); 
+		var form = msgDlg.create('正在查询 Github 加速地址',,true);
+		form.icon = '\uF1D8';
+		form.progress.startProgress(50); 
+	
+		url = ..win.invoke(function(url){
+			import xray.githubMirror;
+			return xray.githubMirror.getMirrorUrl(url);
+		},url);
+		form.close();
+		..publish("uiCommand.print","Github加速地址:");
+		..publish("uiCommand.print",url);	
+	}
 	  
 	import fsys;
 	fsys.delete( ..io.fullpath("/temp/rules/") );

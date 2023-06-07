@@ -38,6 +38,7 @@ ENV/
 /WinXray
 /config
 /xray-core
+/core
 /download
 /tmp
 /temp
