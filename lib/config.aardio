@@ -2,22 +2,6 @@
 import fsys.config;
 config  = fsys.config("/config/"); 
 
-namespace config {
-	__appName = "WinXray"; 
-	__loadDefaultOutbounds = function(){
-		import xray.outbounds;
-		// 如果有文件就读取文件内容；没有的话，就用之前将文件编译了的字符串对象
-		var serverData =  ..string.load("/xray-core/WinXray-default-servers.json") 
-			: $"/xray-core/WinXray-default-servers.json"
-		
-		proxy.outbounds = ..xray.outbounds.importFromString(..string.removeBom(serverData));
-		..publish("outbounds.updateConfigJson",)
-	}
-	
-	if(!proxy.outbounds){
-		__loadDefaultOutbounds();
-	}
-}
 
 if(!config.proxy.mode) config.proxy.mode = "pac";
 if(!config.proxy.pacPort) config.proxy.pacPort = 0;
@@ -157,8 +141,3 @@ if(!config.core.default.inbounds[2]){
 		tag="http_proxy"
 	}
 }
-
-/**intellisense(config)
-__appName = 应用程序名
-? = 配置文件名,\n读写配置并序列化为一个表对象,\n表的成员值可以是支持序列化的普通变量,支持table对象\n配置文件在首次使用时自动加载,退出程序时自动保存\n!fsys_table.
-end intellisense**/

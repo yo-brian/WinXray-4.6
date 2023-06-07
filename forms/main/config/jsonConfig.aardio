@@ -388,16 +388,6 @@ winform.editOutbounds.enablePopMenu(function(){
 			} 
 		}); 
 		
-		table.push(menu,{ "另存为默认服务器列表(JSON)";
-			function(id){
-				var str = web.json.stringifyArray( 
-					config.proxy.outbounds,true,false,true
-				)
-				
-				string.save("/xray-core/WinXray-default-servers.json",str );
-				winform.msgOk("已存为默认服务器列表 /xray-core/WinXray-default-servers.json",1000)
-			} 
-		}); 
 				
 		table.push(menu,{ /*---分隔线---*/ });
 		if(winform.editOutbounds.modified){
@@ -414,17 +404,7 @@ winform.editOutbounds.enablePopMenu(function(){
 				} 
 			}); 
 		}
-		
-		table.push(menu,{ "重置为默认服务器列表(JSON)";
-			function(id){
-				winform.btnUpdate.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'}
-				..config.__loadDefaultOutbounds();
-				winform.editOutbounds.modified = false;
-				publish("uiCommand.restartxrayCore",cfg);
-				
-				winform.btnUpdate.disabledText = null;
-			} 
-		}); 
+		 
 		
 		table.push(menu,{ "清空服务器列表";
 			function(id){

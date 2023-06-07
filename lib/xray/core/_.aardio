@@ -103,6 +103,7 @@ restart = function(editor,outbound){
 			return false,"SSR Core 启动失败";
 		}
 
+		// 修改outbound变量，让xray的config.json中，outbound配置指向自己
 		outbound = {
 			protocol = "socks";
 			address = "127.0.0.1";
@@ -118,6 +119,7 @@ restart = function(editor,outbound){
 			return false,"Naive Core 启动失败";
 		}
 
+		// 修改outbound变量，让xray的config.json中，outbound配置指向自己
 		outbound = {
 			protocol = "socks";
 			address = "127.0.0.1";
@@ -130,7 +132,7 @@ restart = function(editor,outbound){
 	// 启动程序时点击按钮，prcsxray为空，进入分支
 	if( ! prcsxray ){ 
 		import xray.core.configJson;
-		// 生成代理节点的json配置文件
+		// 生成xray的config.json文件
 		var jsonPath,err = ..xray.core.configJson.write(
 			..io.joinpath(..io.splitpath(corePath).dir,"config.json")
 			,outbound,socksProxyPort,httpProxPort);

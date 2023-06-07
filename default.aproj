@@ -31,7 +31,4 @@
 			</folder>
 		</folder>
 	</folder>
-	<folder name="xray-core" path="xray-core" comment="xray-core" local="false" embed="false" ignored="false">
-		<file name="WinXray-default-servers.json" path="xray-core\WinXray-default-servers.json" comment="xray-core\WinXray-default-servers.json"/>
-	</folder>
 </project>

@@ -37,8 +37,7 @@ ENV/
 # winxray
 /WinXray
 /config
-/xray-core/**
-!/xray-core/WinXray-default-servers.json
+/xray-core
 /download
 /tmp
 /temp
