@@ -1202,6 +1202,9 @@ frmXray.btnImportServerFromClipBd.oncommand = function(id,event){
 
 		var outbounds = xray.outbounds.importFromString(str);
 		if(#outbounds){
+			if(config.proxy.outbounds===null){
+				config.proxy.outbounds = ..table.array();
+			}
 			..table.append(config.proxy.outbounds,outbounds); 
 			publish("uiCommand.restartxrayCore");
 			publish("outbounds.updateConfigJson");
