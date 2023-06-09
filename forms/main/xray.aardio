@@ -1092,7 +1092,7 @@ frmXray.listview.setColumnImageList(iml);
 
 subscribe("uiCommand.restartxrayCore",function(){ 
 	config.proxy.outbounds.fields = {"protocol";"address";"port";"security";"network";"ps";}
-	
+	//frmXray.listview.fillParent();
 	var outbounds = config.proxy.outbounds;
 	for(i=#outbounds;1;-1){
 		if(type(outbounds[i])!="table"){
@@ -1100,6 +1100,7 @@ subscribe("uiCommand.restartxrayCore",function(){
 		}
 	}
 	frmXray.listview.setTable(outbounds); 
+	frmXray.listview.fillParent();
 	// 程序首次执行时，lastDownloadingCoreFailed没有定义，所以下面一定会执行
 	if(!xray.core.lastDownloadingCoreFailed) frmXray.btnTcping.oncommand();
 } )
