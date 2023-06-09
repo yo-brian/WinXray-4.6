@@ -853,7 +853,7 @@ frmXray.listview.onnotify = function(id,code,ptr){
 // 排序函数
 frmXray.listview.sortBySpeed = function () {
 	if(frmXray.btnTcping.disabledText){
-		frmXray.msgWarn("请等待测速完成，然后再点击此排序列。");
+		frmXray.msgWarn("请等待测速完成，然后再点击此排序列。",1000);
 		return;
 	}
 	

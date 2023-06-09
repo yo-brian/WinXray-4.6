@@ -6,11 +6,12 @@ namespace xray.githubMirror{
 		var githubMirror = config.githubMirror.mirrors;
 		..table.push(githubMirror,{"url": "https://cors.isteed.cc/"});
 		..table.push(githubMirror,{"url": "https://gh.gh2233.ml/"});
-		..table.push(githubMirror,{"url": "https://ghdl.feizhuqwq.cf/"});
 		..table.push(githubMirror,{"url": "https://hub.gitmirror.com/"});
 		..table.push(githubMirror,{"url": "https://js.xxooo.ml/"});
 		..table.push(githubMirror,{"url": "https://ghproxy.com/"});
 		..table.push(githubMirror,{"url": "https://gh.ddlc.top/"});
+		..table.push(githubMirror,{"url": "https://gh.con.sh/"});
+		..table.push(githubMirror,{"url": "https://ghps.cc/"});
 		config.githubMirror.autoAdd = true;
 		config.githubMirror.save();
 	}

@@ -9,6 +9,7 @@ env/
 build/
 dist/
 *.log
+build_error_log.txt
 
 # pyenv
 .python-version
