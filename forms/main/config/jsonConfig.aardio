@@ -291,7 +291,7 @@ winform.editOutbounds.enablePopMenu(function(){
 					
 					winform.editOutbounds.text = ..web.json.stringifyArray(cfg,true,false,true);
 						
-					winform.msgOk("已成功刷新" + count + "个服务器,请点击「更新设置」启用新配置。",1200);
+					winform.msgOk("已成功刷新" + count + "个服务器,请点击「更新设置」启用新配置。",2000);
 					winform.editOutbounds.modified = true;
 					winform.editOutbounds.setFocus();
 					return;   
@@ -654,7 +654,7 @@ winform.btnUpdateSsrCore.oncommand = function(id,event){
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdateSsrCore.disabledText = null;
-		winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,2000)
+		winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,2000);
 	}
 	else {
 		winform.btnUpdateSsrCore.disabledText = null;
@@ -676,7 +676,7 @@ winform.btnUpdatexrayCore.oncommand = function(id,event){
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdatexrayCore.disabledText = null;
-		winform.msgOk("Xray Core 已更新到：" + versionTag)
+		winform.msgOk("Xray Core 已更新到：" + versionTag,2000);
 	}
 	else {
 		winform.btnUpdatexrayCore.disabledText = null;
@@ -717,7 +717,7 @@ winform.btnUpdateNaiveCore.oncommand = function(id,event){
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdateNaiveCore.disabledText = null;
-		winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,2000)
+		winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,2000);
 	}
 	else {
 		winform.btnUpdateNaiveCore.disabledText = null;
