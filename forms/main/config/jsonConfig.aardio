@@ -645,14 +645,20 @@ winform.btnUpdateSsrCore.oncommand = function(id,event){
 	winform.btnUpdateSsrCore.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'};
 	
 	import xray.core.ssr;
-	var versionTag = xray.core.ssr.updateCore();
+	var versionTag,isLatestVersion = xray.core.ssr.updateCore();
+	if(isLatestVersion){
+		winform.btnUpdateSsrCore.disabledText = null;
+		winform.msgSmile('SSR Core（ ShadowsocksR-native ）已是最新版本 (' + versionTag + ')，无需更新',2000);
+		return;
+	}
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdateSsrCore.disabledText = null;
-		winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,1500)
+		winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,2000)
 	}
 	else {
 		winform.btnUpdateSsrCore.disabledText = null;
+		winform.msgErr("SSR Core（ ShadowsocksR-native ）下载失败！");
 	} 	
 }
 
@@ -661,15 +667,20 @@ winform.btnUpdatexrayCore.oncommand = function(id,event){
 	winform.btnUpdatexrayCore.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'};
 	
 	import xray.core;
-	var versionTag = xray.core.updateCore();
+	var versionTag,isLatestVersion = xray.core.updateCore();
+	if(isLatestVersion){
+		winform.btnUpdatexrayCore.disabledText = null;
+		winform.msgSmile('Xray Core 已是最新版本 (' + versionTag + ')，无需更新',2000);
+		return;
+	}
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdatexrayCore.disabledText = null;
-		winform.msgOk("已下载最新 xray Core 版本：" + versionTag + '\nxray 内核已切换为： xray Core',1500)
+		winform.msgOk("Xray Core 已更新到：" + versionTag)
 	}
 	else {
 		winform.btnUpdatexrayCore.disabledText = null;
-		winform.msgErr("xray Core 下载失败！");
+		winform.msgErr("Xray Core 下载失败！");
 	} 
 	
 }
@@ -688,7 +699,7 @@ winform.btnUpdateRules.oncommand = function(id,event){
 	}
 	else {
 		winform.btnUpdateRules.disabledText = null;
-		winform.msgErr("路由规则下载失败！",1000);
+		winform.msgErr("路由规则下载失败！",2000);
 	}  
 }
 
@@ -697,11 +708,16 @@ winform.btnUpdateNaiveCore.oncommand = function(id,event){
 	winform.btnUpdateNaiveCore.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'};
 	
 	import xray.core.naive;
-	var versionTag = xray.core.naive.updateCore();
+	var versionTag,isLatestVersion = xray.core.naive.updateCore();
+	if(isLatestVersion){
+		winform.btnUpdateNaiveCore.disabledText = null;
+		winform.msgSmile('NaÏveProxy Core 已是最新版本 (' + versionTag + ')，无需更新',2000);
+		return;
+	}
 	if( versionTag ){
 		publish("uiCommand.restartxrayCore");
 		winform.btnUpdateNaiveCore.disabledText = null;
-		winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,1500)
+		winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,2000)
 	}
 	else {
 		winform.btnUpdateNaiveCore.disabledText = null;

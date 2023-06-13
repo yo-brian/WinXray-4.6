@@ -560,11 +560,16 @@ winform.btnUpdateCore.oncommand = function(id,event){
 	
 	if(sel=="ssr"){
 		import xray.core.ssr;
-		var versionTag = xray.core.ssr.updateCore();
+		var versionTag,isLatestVersion = xray.core.ssr.updateCore();
+		if(isLatestVersion){
+			winform.btnUpdateCore.disabledText = null;
+			winform.msgSmile('SSR Core（ ShadowsocksR-native ）已是最新版本 (' + versionTag + ')，无需更新',2000);
+			return;
+		}
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,1500)
+			winform.msgOk("SSR Core（ ShadowsocksR-native ） 已更新到：" + versionTag,2000)
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
@@ -572,11 +577,16 @@ winform.btnUpdateCore.oncommand = function(id,event){
 	}
 	elseif(sel=="vless"){
 		import xray.core;
-		var versionTag = xray.core.updateCore();
+		var versionTag,isLatestVersion = xray.core.updateCore();
+		if(isLatestVersion){
+			winform.btnUpdateCore.disabledText = null;
+			winform.msgSmile('Xray Core 已是最新版本 (' + versionTag + ')，无需更新');
+			return;
+		}
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("Xray Core 已更新到：" + versionTag,1500)
+			winform.msgOk("Xray Core 已更新到：" + versionTag,2000);
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
@@ -585,11 +595,16 @@ winform.btnUpdateCore.oncommand = function(id,event){
 	}
 	elseif(sel=="naive"){
 		import xray.core.naive;
-		var versionTag = xray.core.naive.updateCore();
+		var versionTag,isLatestVersion = xray.core.naive.updateCore();
+		if(isLatestVersion){
+			winform.btnUpdateCore.disabledText = null;
+			winform.msgSmile('NaÏveProxy Core 已是最新版本 (' + versionTag + ')，无需更新',2000);
+			return;
+		}
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,1500)
+			winform.msgOk("NaÏveProxy Core 已更新到：" + versionTag,2000)
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
@@ -598,11 +613,16 @@ winform.btnUpdateCore.oncommand = function(id,event){
 	}	
 	else {
 		import xray.core;
-		var versionTag = xray.core.updateCore();
+		var versionTag,isLatestVersion = xray.core.updateCore();
+		if(isLatestVersion){
+			winform.btnUpdateCore.disabledText = null;
+			winform.msgSmile('Xray Core 已是最新版本 (' + versionTag + ')，无需更新',2000);
+			return;
+		}
 		if( versionTag ){
 			publish("uiCommand.restartxrayCore");
 			winform.btnUpdateCore.disabledText = null;
-			winform.msgOk("Xray Core 已更新到：" + versionTag,1500)
+			winform.msgOk("Xray Core 已更新到：" + versionTag,2000)
 		}
 		else {
 			winform.btnUpdateCore.disabledText = null;
