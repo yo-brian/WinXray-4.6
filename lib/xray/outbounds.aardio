@@ -1109,9 +1109,9 @@ updateSubscription = function(outbondSubscribeUrlMap){
 	}
 	
 	..config.proxy.save();
+	..mainForm.msgOk("已刷新" + count + "个订阅服务器。",1500);
 	..publish("outbounds.updateConfigJson");
 	..publish("uiCommand.restartxrayCore",cfgOutbounds) 
-	..mainForm.msgOk("已刷新" + count + "个订阅服务器。",1500);
 	
 	return count;
 }
