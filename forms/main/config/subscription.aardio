@@ -4,7 +4,7 @@ import win.ui;
 var winform = win.form(text="aardio form";right=892;bottom=564;bgcolor=16777215)
 winform.add(
 btnAdd={cls="plus";text="添加订阅";left=10;top=4;right=143;bottom=31;align="left";dl=1;dt=1;font=LOGFONT(h=-15);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=12}};iconText='\uF196 ';notify=1;textPadding={left=30};z=5};
-btnRemove={cls="plus";text="移除选中订阅";left=143;top=4;right=276;bottom=31;align="left";dl=1;dt=1;font=LOGFONT(h=-15);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=12}};iconText='\uF014';notify=1;textPadding={left=30};z=6};
+btnRemove={cls="plus";text="移除选中订阅";left=143;top=4;right=290;bottom=31;align="left";dl=1;dt=1;font=LOGFONT(h=-15);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=12}};iconText='\uF014';notify=1;textPadding={left=30};z=6};
 btnUpdate={cls="plus";text="更新订阅";left=608;top=506;right=730;bottom=542;align="left";bgcolor=11580047;db=1;dr=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=22}};iconText='\uF0C7';notify=1;textPadding={left=40};z=1};
 chkAll={cls="plus";text="全部启用";left=11;top=489;right=118;bottom=520;align="left";bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF0C8';notify=1;textPadding={left=19};z=3};
 chkAutoRefreshSubscription={cls="plus";text="允许出站服务器异常自动刷新订阅";left=11;top=524;right=527;bottom=555;align="left";bgcolor=16777215;db=1;dl=1;dr=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF0C8';notify=1;textPadding={left=19};z=2};
@@ -239,7 +239,7 @@ winform.btnAdd.oncommand = function(id,event){
 		}
 	} 
 	
-	config.proxy.subscribeUrls[winform.listview.count+1] = {checked="启用";ps="订阅源";url=url}
+	config.proxy.subscribeUrls[winform.listview.count+1] = {checked="启用";ps=ps;url=url}
 	var item = winform.listview.addItem({
 		"";"启用";ps;url
 	})
