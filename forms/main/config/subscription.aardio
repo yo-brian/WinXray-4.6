@@ -131,29 +131,20 @@ winform.btnUpdate.oncommand = function(id,event){
 	
 	var outbondSubscribeUrlMap = {};
 	var cfgSubscribeUrls = config.proxy.subscribeUrls;
+	if(#cfgSubscribeUrls == 0 ){
+		..mainForm.msgErr("尚未导入订阅节点",1500);
+		winform.btnUpdate.disabledText = null;
+		return; 
+	}
 	for(i=#cfgSubscribeUrls;1;-1){
 		var sub = cfgSubscribeUrls[i];
 		// sub.checked等于启用时，outbondSubscribeUrlMap[sub.url]为true
 		outbondSubscribeUrlMap[sub.url] = sub.checked=="启用";
 	} 
-	
-	var removed = 0;
-	var outbounds = ..config.proxy.outbounds : ..table.array();
-	for(i=#outbounds;1;-1){
-		var outbound = outbounds[i]  
-		if(outbound.subscribeUrl){ 
-			if(!outbondSubscribeUrlMap[outbound.subscribeUrl]){
-				table.remove(outbounds,i);
-				removed++;	
-			}
-		}
-	} 
-	
-	if(removed) config.proxy.save();
 		
 	import xray.outbounds;
 	if(!xray.outbounds.updateSubscription()){
-		if(removed) publish("uiCommand.restartxrayCore",outbounds) 
+		publish("uiCommand.restartxrayCore",outbounds) 
 	}
 	
 	winform.btnUpdate.disabledText = null;
