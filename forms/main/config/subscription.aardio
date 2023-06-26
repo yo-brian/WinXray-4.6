@@ -5,11 +5,11 @@ var winform = win.form(text="aardio form";right=892;bottom=564;bgcolor=16777215)
 winform.add(
 btnAdd={cls="plus";text="添加订阅";left=10;top=4;right=143;bottom=31;align="left";dl=1;dt=1;font=LOGFONT(h=-15);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=12}};iconText='\uF196 ';notify=1;textPadding={left=30};z=5};
 btnRemove={cls="plus";text="移除选中订阅";left=143;top=4;right=290;bottom=31;align="left";dl=1;dt=1;font=LOGFONT(h=-15);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=12}};iconText='\uF014';notify=1;textPadding={left=30};z=6};
-btnUpdate={cls="plus";text="更新订阅";left=608;top=506;right=730;bottom=542;align="left";bgcolor=11580047;db=1;dr=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=22}};iconText='\uF0C7';notify=1;textPadding={left=40};z=1};
+btnUpdate={cls="plus";text="更新订阅";left=726;top=512;right=848;bottom=548;align="left";bgcolor=11580047;db=1;dr=1;font=LOGFONT(h=-13);iconStyle={align="left";font=LOGFONT(h=-13;name='FontAwesome');padding={left=22}};iconText='\uF0C7';notify=1;textPadding={left=40};z=1};
 chkAll={cls="plus";text="全部启用";left=11;top=489;right=118;bottom=520;align="left";bgcolor=16777215;db=1;dl=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF0C8';notify=1;textPadding={left=19};z=3};
 chkAutoRefreshSubscription={cls="plus";text="允许出站服务器异常自动刷新订阅";left=11;top=524;right=527;bottom=555;align="left";bgcolor=16777215;db=1;dl=1;dr=1;font=LOGFONT(h=-16);iconStyle={align="left";font=LOGFONT(h=-16;name='FontAwesome')};iconText='\uF0C8';notify=1;textPadding={left=19};z=2};
 listview={cls="listview";left=10;top=36;right=883;bottom=477;db=1;dl=1;dr=1;dt=1;edge=1;fullRow=1;gridLines=1;z=4};
-static={cls="static";text="双击上面单元格可直接编辑";left=710;top=616;right=867;bottom=634;color=10789024;db=1;dr=1;transparent=1;z=7}
+static={cls="static";text="双击上面单元格可直接编辑";left=678;top=486;right=848;bottom=507;align="right";color=10789024;db=1;dr=1;transparent=1;z=7}
 )
 /*}}*/
 
@@ -123,19 +123,6 @@ grid.onEditChanged = function(text,iItem,iSubItem){
 	}
 } 
 
-winform.popmenu = win.ui.popmenu(winform);//创建弹出菜单
-winform.popmenu.add('删除',function(id){
-	winform.btnRemove.oncommand();
-});
-winform.popmenu.add('全部删除',function(id){ 
-    for(i=1; winform.listview.count)  winform.listview.setSelected(i,true);
-	winform.btnRemove.oncommand();
-});
-winform.popmenu.add();
-winform.popmenu.add('自剪贴板添加订阅',function(id){ 
-    winform.btnAdd.oncommand();
-});
-
 winform.btnUpdate.skin(style.primaryButton);
 winform.btnUpdate.oncommand = function(id,event){
 
@@ -145,7 +132,8 @@ winform.btnUpdate.oncommand = function(id,event){
 	var outbondSubscribeUrlMap = {};
 	var cfgSubscribeUrls = config.proxy.subscribeUrls;
 	for(i=#cfgSubscribeUrls;1;-1){
-		var sub = cfgSubscribeUrls[i]  
+		var sub = cfgSubscribeUrls[i];
+		// sub.checked等于启用时，outbondSubscribeUrlMap[sub.url]为true
 		outbondSubscribeUrlMap[sub.url] = sub.checked=="启用";
 	} 
 	
@@ -185,7 +173,7 @@ winform.btnRemove.oncommand = function(id,event){
 	var subscribeUrls = config.proxy.subscribeUrls;
 	var items = winform.listview.selected;
 	if(!#items){
-		return winform.msgWarn("未选中任何订阅项（ 请用鼠标单击订阅链接，不是指「勾选」 ）")
+		return winform.msgWarn("未选中任何订阅项（ 请用鼠标单击订阅链接，不是指「勾选」 ）",2000)
 	}
 	
 	winform.btnUpdate.disabledText = {'\uF254';'\uF251';'\uF252';'\uF253';'\uF250'}
@@ -299,7 +287,43 @@ winform.listview.onnotify = function(id,code,ptr){
 	}
 	elseif( code ==  0xFFFFFFFB/*_NM_RCLICK*/ )  {
 		var x,y = win.getCursorPos();
-		winform.popmenu.popup(x,y,true);//弹出菜单
+		var nm = winform.listview.getNotifyMessage(code,ptr);
+		if(!nm) return;
+		
+		var currentIdx = nm.iItem;
+		// 没有选中item时的菜单
+		if(!currentIdx){
+			var popmenu = win.ui.popmenu(winform);
+			
+			popmenu.add('全部删除',function(id){ 
+    		for(i=1; winform.listview.count)  winform.listview.setSelected(i,true);
+				winform.btnRemove.oncommand();
+			});
+			popmenu.add('自剪贴板添加订阅',function(id){ 
+    			winform.btnAdd.oncommand();
+			});
+			
+			// 弹出菜单
+			popmenu.popup(x,y,true);
+			return;
+		}
+		
+		// 有选中item时的菜单
+		var selectedItems = winform.listview.selected;
+		var popmenu = win.ui.popmenu(winform);
+		popmenu.add('删除',function(id){
+			winform.btnRemove.oncommand();
+		});
+		popmenu.add('全部删除',function(id){ 
+    	for(i=1; winform.listview.count)  winform.listview.setSelected(i,true);
+			winform.btnRemove.oncommand();
+		});
+		popmenu.add('自剪贴板添加订阅',function(id){ 
+    		winform.btnAdd.oncommand();
+		});
+		
+		// 弹出菜单
+		popmenu.popup(x,y,true);
 	}
 }
 
