@@ -34,33 +34,7 @@ import inet.url;
 var reloadSubscriptions = function(){
 	winform.chkAutoRefreshSubscription.checked = config.proxy.autoRefreshSubscription; 
 	config.proxy.subscribeUrls.fields =  {"";"checked";"ps";"url";} 
-	var outbounds = ..config.proxy.outbounds : ..table.array(); 
-	
-	var outbondSubscribeUrlMap = {};
-	for(i=#outbounds;1;-1){
-		var outbound = outbounds[i] 
-		if(outbound.subscribeUrl){ 
-			outbondSubscribeUrlMap[outbound.subscribeUrl] = true;	 
-		}
-	} 
-	
 	var cfgSubscribeUrls = config.proxy.subscribeUrls;
-	for(i=#cfgSubscribeUrls;1;-1){
-		var sub = cfgSubscribeUrls[i]  
-		if(outbondSubscribeUrlMap[sub.url]){
-			outbondSubscribeUrlMap[sub.url] = null;	
-		}
-		else{
-			sub.checked = "禁用";
-		}
-	} 
-	
-	var count = 0;
-	for(url,v in outbondSubscribeUrlMap){ 
-		var tUrl = ..inet.url.split(subscribeUrl); 
-		..table.push(cfgSubscribeUrls,{url=url;ps=tUrl ? tUrl.host : "";checked="启用"})
-	} 
-	
 	var chkAll = true;
 	var checked = {}
 	for(i=#cfgSubscribeUrls;1;-1){
@@ -253,7 +227,6 @@ winform.listview.onnotify = function(id,code,ptr){
 				var sub = config.proxy.subscribeUrls[i] 
 				if(sub.checked!="启用"){ 
 					chkAll = false;
-					
 				}
 			} 
 				
@@ -302,7 +275,19 @@ winform.listview.onnotify = function(id,code,ptr){
 		// 有选中item时的菜单
 		var selectedItems = winform.listview.selected;
 		var popmenu = win.ui.popmenu(winform);
-		popmenu.add('删除',function(id){
+		if(#selectedItems==1){
+			popmenu.add('更新当前订阅',function(id){
+				var cfgSubscribeIndex = selectedItems[1]
+				var currentSubscribeUrl = config.proxy.subscribeUrls[cfgSubscribeIndex]['url'];
+				config.proxy.subscribeUrls[cfgSubscribeIndex].checked = "启用";
+				config.proxy.save();
+				winform.listview.setChecked(currentIdx,true)
+				winform.listview.setItemText("启用",currentIdx,2);
+				xray.outbounds.updateSubscription({[currentSubscribeUrl]=true});
+			});
+			popmenu.add()
+		}
+		popmenu.add('删除选中',function(id){
 			winform.btnRemove.oncommand();
 		});
 		popmenu.add('全部删除',function(id){ 
