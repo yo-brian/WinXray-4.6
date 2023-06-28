@@ -116,6 +116,7 @@ winform.adjust = function( cx,cy,wParam ) {
 };
 
 import win.debounce;
+// 搜索防抖动
 winform.plusSearch.editBox.onChange = win.debounce(function(){
 	if(#winform.plusSearch.text) reloadItemData();
 })
@@ -128,6 +129,7 @@ var exemptUwpApp = function(exempted){
 	} 
 	sys.networkIsolation.enableLoopback(sidConfigs);
 	
+	// 更新第三列，是否允许访问本机网络
 	var exemptApps = sys.networkIsolation.getLoopbackState();
 	for item,sid in winform.listview.eachSelected(4){
 		winform.listview.setItemText( exemptApps[sid]?uiLanguage.enabled:uiLanguage.disabled,item,3); 
@@ -218,9 +220,12 @@ var setUiLanguage = function(lang){
 	winform.plusSearch.setCueBannerText(uiLanguage.searchCueBannerText)
 }
 
+// 获取用户的默认区域设置
 var lcid = ::Kernel32.GetUserDefaultLCID()
+// 如果区域设置是繁体中文（台湾、香港、澳门）
 if( lcid==1028 || lcid == 3076 || lcid == 5124 ){
 	import string.conv; 
+	// 将界面语言转换为繁体中文
 	setUiLanguage(table.map(uiLanguage,lambda(v) string.conv.traditionalized(v)) ) 
 }
 else {
