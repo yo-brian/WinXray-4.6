@@ -746,7 +746,7 @@ winform.btnGithubMirror.skin(style.plainButton)
 winform.btnGithubMirror.oncommand = function(id,event){
 	var frmChild = winform.loadForm("\forms\main\config\githubMirrorConfig.aardio");
 	frmChild.show();
-	frmChild.doModal(winform);
+	frmChild.doModal();
 }
 
 winform.show();
