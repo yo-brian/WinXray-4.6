@@ -45,8 +45,11 @@ WinXray 分为原版、抄袭版。
 
 ---
 
-# 原项目删库前的`README`的部分内容截取
----
+# 原项目
+## 原始库由`win2ray`更名为`winXray`网页快照留念
+[https://web.archive.org/web/20201128074203/https://github.com/winXray/winXray](https://web.archive.org/web/20201128074203/https://github.com/winXray/winXray)
+## 原始库删库前的`README`的部分内容截取
+
 
 # 使用前必读    
 最终都要删库跑路的原因大家都懂不用我多说了吧？！ 我删库特别快，是因为我写代码的速度快，我用了几小时就完成了 winXray 的主要代码，用了几天升级就迅速达到了一般其他软件写了几年的成熟度！因为我即将删库，但是我推上去的更新 - fork 的项目基本都没有那么迅速的主动拉更新，大家可以看一下 winXray 上线才短短几天就超过了 600 forks, 所以如果我推送更新之前不删库，那么我删库以后就没有人能找到最新版本的源代码。   
