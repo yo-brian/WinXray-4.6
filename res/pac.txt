@@ -6021,7 +6021,7 @@ var rules = [
             "zyzc9.com",
             "zzcartoon.com",
             "zzcloud.me",
-            "zzux.com"
+            "zzux.com",
             "149.154.160.0/22",
             "149.154.164.0/22",
             "149.154.172.0/22",
