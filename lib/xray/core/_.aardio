@@ -205,10 +205,11 @@ var getxrayCoreUrl = function(){
 	
 	var url,tag = ..win.invoke(function(){
     	import process;
-		import inet.http;
+		import curl;
 		import web.json;
 		
-		var http = inet.http();
+		var http = curl.easy();
+		http.setHttpHeader("User-Agent: curl/aardio.curl.easy");
 		var response = http.get("https://api.github.com/repos/XTLS/Xray-core/releases");
 		http.close();
 		if(!response) return;

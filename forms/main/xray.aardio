@@ -82,23 +82,7 @@ var activeOutbound = function(outboundIndex,outboundAddress,enableRetry,timerTes
 				if(timerTesting){
 					sleep(100);
 				}
-				
-				/* 这个不开vpn也可以访问，注释掉
-				import inet.http;
-				var http = inet.http(,httpProxyAddress);
-				http.setTimeouts(1000,1000,1000);
-				var isAlive = http.get("http://www.msftconnecttest.com/connecttest.txt")=="Microsoft Connect Test";
-				http.close();	 
 
-				if(isAlive){
-					frmXray.onStartXrayComplete(outboundIndex,timerTesting,outboundAddress);
-					return;	
-				}
-				
-				if(timerTesting){
-					sleep(100);
-				}
-				*/
 				
 				import wsock.tcp.socks5Client;
 				

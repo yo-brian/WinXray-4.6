@@ -5,9 +5,7 @@ namespace xray.githubMirror{
 		config.githubMirror.mirrors = {};
 		var githubMirror = config.githubMirror.mirrors;
 		..table.push(githubMirror,{"url": "https://cors.isteed.cc/"});
-		..table.push(githubMirror,{"url": "https://gh.gh2233.ml/"});
 		..table.push(githubMirror,{"url": "https://hub.gitmirror.com/"});
-		..table.push(githubMirror,{"url": "https://js.xxooo.ml/"});
 		..table.push(githubMirror,{"url": "https://ghproxy.com/"});
 		..table.push(githubMirror,{"url": "https://gh.ddlc.top/"});
 		..table.push(githubMirror,{"url": "https://gh.con.sh/"});
