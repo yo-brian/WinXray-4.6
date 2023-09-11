@@ -302,7 +302,7 @@ getCoreDir = function(hwnd){
 
 updateCore = function(){
     ..mainForm.disabled = true; 
-    	
+    
 	var coreDir = getCoreDir();
 	var url,versionTag = getxrayCoreUrl();
 	if(!url){		
@@ -313,12 +313,9 @@ updateCore = function(){
 	
 	// 如果已是最新版本，则不下载
 	var path = ..io.fullpath("/core/xray/xray.exe");
-	if(versionTag && ..config.core.xrayVersion && ..io.exist(path)){
+	if(versionTag == ..config.core.xrayVersion && ..io.exist(path)){
 		// true表示已经是最新版
 		return versionTag,true;
-	} elseif(versionTag){
-		..config.core.xrayVersion = versionTag;
-		..config.core.save();
 	}
 	
 		
@@ -368,7 +365,11 @@ updateCore = function(){
 	else {
 		..mainForm.disabled = false;
 		self.lastDownloadingCoreFailed = true; 
-	} 	 
+	}
+	// 更新完成后再写入新版本tag
+	..config.core.xrayVersion = versionTag;
+	..config.core.save();
+	return versionTag,false;
 }
 
 /**intellisense(xray.core)
