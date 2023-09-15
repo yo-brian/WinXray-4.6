@@ -252,7 +252,10 @@ updateCore = function(){
 				..io.createDir(coreDir);  
 				fsys.copy(naivePath,..io.joinpath(coreDir,"naive.exe"));  
 				
-				return versionTag;
+				// 更新完成后再写入新版本tag
+				..config.core.naiveVersion = versionTag;
+				..config.core.save();
+				return versionTag,false;
 			} 
 			else {
 				self.lastDownloadingCoreFailed = true;
@@ -262,10 +265,6 @@ updateCore = function(){
 		..mainForm.disabled = false;
 		self.lastDownloadingCoreFailed = true; 
 	}  
-	// 更新完成后再写入新版本tag
-	..config.core.naiveVersion = versionTag;
-	..config.core.save();
-	return versionTag,false;
 }
 
 /**intellisense(xray.core.naive) 

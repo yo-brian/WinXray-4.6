@@ -356,7 +356,10 @@ updateCore = function(){
 				fsys.copy(..io.fullpath("/temp/xray/xray.exe"),..io.joinpath(coreDir,"xray.exe")); 
 				
 				self.lastDownloadingCoreFailed = null;
-				return versionTag;
+				// 更新完成后再写入新版本tag
+				..config.core.xrayVersion = versionTag;
+				..config.core.save();
+				return versionTag,false;
 			} 
 			else {
 				self.lastDownloadingCoreFailed = true;
@@ -366,10 +369,6 @@ updateCore = function(){
 		..mainForm.disabled = false;
 		self.lastDownloadingCoreFailed = true; 
 	}
-	// 更新完成后再写入新版本tag
-	..config.core.xrayVersion = versionTag;
-	..config.core.save();
-	return versionTag,false;
 }
 
 /**intellisense(xray.core)
