@@ -602,8 +602,8 @@ winform.onActivate = function(state,hwndOther,minimized){
 				
 				var proxy =  web.json.tryParse(string.conv.fromWide(winform.editPacProxy.text)) 
 				if( (proxy)) {
-					winform.radioProxy.checked = table.indexOf(proxy,domain);
-					winform.radioDirect.checked = !winform.radioProxy.checked;
+					winform.radioDirect.checked = table.indexOf(proxy,domain);
+					winform.radioProxy.checked = !winform.radioDirect.checked;
 				}
 			}
 		} 	
